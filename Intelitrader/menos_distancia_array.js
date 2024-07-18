@@ -4,7 +4,7 @@ class Distancia {
         this.array2 = array2;
     }
 
-    menorDeCadaArray() {
+    menorEntreDuasArray() {
         let menorDistancia = Infinity;
         let menorNumero1 = null;
         let menorNumero2 = null;
@@ -22,7 +22,7 @@ class Distancia {
         return [menorDistancia, menorNumero1, menorNumero2];
     }
 
-    menor() {
+    menorDeCadaArray() {
         let menorDistancia = Infinity;
         let menorNumero1 = null;
         let menorNumero2 = null;
@@ -52,8 +52,8 @@ class Distancia {
     }
     
     menorAll() {
-        let resultadoMenor = this.menor();
-        let resultadoDeCadaArray = this.menorDeCadaArray();
+        let resultadoMenor = this.menorDeCadaArray();
+        let resultadoDeCadaArray = this.menorEntreDuasArray();
 
         if (resultadoDeCadaArray[0] < resultadoMenor[0]) {
             return resultadoDeCadaArray;
@@ -68,8 +68,8 @@ const array2 = [5, 18, 29, 34, 50, 63, 77, 77, 93, 101];
 
 const distancia = new Distancia(array1, array2);
 
-const resultadoDeCadaArray = distancia.menorDeCadaArray();
-const resultadoMenor = distancia.menor();
+const resultadoDeCadaArray = distancia.menorEntreDuasArray();
+const resultadoMenor = distancia.menorDeCadaArray();
 const resultadoAll = distancia.menorAll();
 
 console.log(`Menor distância entre os dois arrays é: ${resultadoDeCadaArray[0]} entre ${resultadoDeCadaArray[1]} e ${resultadoDeCadaArray[2]}`);
