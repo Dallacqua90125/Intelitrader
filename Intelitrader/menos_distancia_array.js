@@ -1,9 +1,34 @@
 class Distancia {
-    constructor(array1, array2) {
-        this.array1 = array1;
-        this.array2 = array2;
+    constructor() {
+        this.array1 = [];
+        this.array2 = [];
     }
-
+    criarArray(){
+        for (let i = 1; i < 20; i++) {
+            if (i === 10) {
+                input = prompt(`${i} numero da primeira array`)
+                number = parseInt(input);
+                if (!isNaN(number)) {
+                    this.array1.push(number)
+                    break;
+                }else {
+                    alert('insira um número');
+                    i =- 1;
+                }
+            }if (i === 11) {
+                input = prompt(`${i} numero da segunda array`)
+                number = parseInt(input);
+                if (!isNaN(number)) {
+                    this.array2.push(number)
+                    break;
+                }else {
+                    alert('insira um número');
+                    i =- 1;
+                }
+            }
+            
+        }
+    }
     menorEntreDuasArray() {
         let menorDistancia = Infinity;
         let menorNumero1 = null;
@@ -21,14 +46,14 @@ class Distancia {
         }
         return [menorDistancia, menorNumero1, menorNumero2];
     }
+
 }
 
-const array1 = [10, 22, 35, 47, 53, 66, 78, 89, 94, 105];
-const array2 = [5, 18, 29, 34, 50, 63, 77, 77, 93, 101];
 
-const distancia = new Distancia(array1, array2);
+const distancia = new Distancia;
 
-const resultadoDeCadaArray = distancia.menorEntreDuasArray();
-;
+const Array = distancia.criarArray;
+
+const resultadoDeCadaArray = distancia.menorEntreDuasArray()
 
 console.log(`Menor distância entre os dois arrays é: ${resultadoDeCadaArray[0]} entre ${resultadoDeCadaArray[1]} e ${resultadoDeCadaArray[2]}`);
