@@ -6,6 +6,11 @@
     <title>Document</title>
 </head>
 <body>
+    <h1>Resultado das Arrays</h1>
+    <p id="array1"></p>
+    <p id="array2"></p>
+    <p id="resultado"></p>
+
     <script>
         class Distancia {
             constructor() {
@@ -14,7 +19,6 @@
             }
 
             criarArray() {
-                // Preenchendo o primeiro array com 10 números
                 for (let i = 1; i <= 10; i++) {
                     let input, number;
                     while (true) {
@@ -29,7 +33,6 @@
                     }
                 }
 
-                
                 for (let i = 1; i <= 10; i++) {
                     let input, number;
                     while (true) {
@@ -43,6 +46,7 @@
                         }
                     }
                 }
+                return [this.array1, this.array2];
             }
 
             menorEntreDuasArray() {
@@ -65,10 +69,12 @@
         }
 
         const distancia = new Distancia();
-        distancia.criarArray();
+        const arrays = distancia.criarArray();
         const resultadoDeCadaArray = distancia.menorEntreDuasArray();
 
-        console.log(`Menor distância entre os dois arrays é: ${resultadoDeCadaArray[0]} entre ${resultadoDeCadaArray[1]} e ${resultadoDeCadaArray[2]}`);
+        document.getElementById('array1').textContent = `Array 1: ${arrays[0].join(', ')}`;
+        document.getElementById('array2').textContent = `Array 2: ${arrays[1].join(', ')}`;
+        document.getElementById('resultado').textContent = `Menor distância entre os dois arrays é: ${resultadoDeCadaArray[0]} entre ${resultadoDeCadaArray[1]} e ${resultadoDeCadaArray[2]}`;
     </script>
 </body>
 </html>
