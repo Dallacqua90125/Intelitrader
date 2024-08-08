@@ -11,17 +11,17 @@
     <br><br>
 
     <label>Insira a posição</label>
-    <input type="number" class="position">
+    <input type="number" class="position" required>
 
     <br><br>
 
     <label>Insira o valor</label>
-    <input type="number" class="value">
+    <input type="number" class="value" required>
 
     <br><br>
 
     <label>Insira a quantidade</label>
-    <input type="number" class="quantity">
+    <input type="number" class="quantity" required>
 
     <br><br>
 
@@ -74,7 +74,8 @@
             }
 
             modifyOrder(order) {
-                for (let i = 0; i < this.orders.length; i++) {
+                if (!this.verificator(order)) {
+                    for (let i = 0; i < this.orders.length; i++) {
                     if (this.orders[i].position === order.position) {
                         if (order.value === 0) {
                             order.value = this.orders[i].value;
@@ -89,6 +90,8 @@
                         return;
                     }
                 }
+                }
+                
             }
 
             deleteOrder(order) {
@@ -108,18 +111,12 @@
             }
 
             verificator(order) {
-                if (order.position <= 0 ) {
-                    alert('Insira a posição correta');
+                if (order.action === 0) {
+                    if (order.position <= 0 || order.position === '' || order.value <= 0 || order.value === '' || order.quantity <= 0 || order.quantity === '') {
+                    alert('Insira a posição correta. Utilize números');
                     return true;
                 }
-                if (order.value <= 0) {
-                    alert('Insira o valor correto');
-                    return true;
-                }
-                if (order.quantity <= 0) {
-                    alert('Insira a quantidade correta');
-                    return true;
-                }
+
                 
                 let i = 0;
                 for (i = 0; i < this.orders.length; i++) {
@@ -138,6 +135,16 @@
                     return true;
                 }
                 return false;
+                }
+
+                if (order.action === 1) {
+                    if (isNaN(order.position) || isNaN(order.value) || isNaN(order.quantity)) {
+                    alert('Todos os campos devem ser preenchidos')
+                    return true
+                }
+                return false
+                }
+                
             }
 
             showOrderBook() {
@@ -193,6 +200,8 @@
                 const actionInput = 1;
                 const valueInput = parseFloat(document.querySelector(".value").value);
                 const quantityInput = parseFloat(document.querySelector(".quantity").value);
+
+                
 
                 this.orderBook.updateOrderBook(positionInput, actionInput, valueInput, quantityInput);
                 this.orderBook.showOrderBook(); 
